@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeCity Farms — Grown Fresh</title>
+
+<meta name="description" content="HomeCity Farms is a family-run livestock farm in Peki, Volta Region, Ghana. Pigs, piglets, and fresh pork, raised with care and sold direct.">
+<meta property="og:title" content="HomeCity Farms — Quality You Can Trust">
+<meta property="og:description" content="A family-run livestock farm in Peki, Volta Region, Ghana. Raised with care, sold direct.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink: #1d1730;
+    --purple: #5b2fae;
+    --purple-deep: #33206b;
+    --blue: #2f6fed;
+    --sky: #eef0fa;
+    --sky-dim: #e2e4f4;
+    --paper: #ffffff;
+
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    font-family: var(--body);
+    background: var(--sky);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  img, svg{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--blue);
+    display: inline-block;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(238,240,250,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(29,23,48,0.1);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .brand{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-logo{
+    height: 56px;
+    width: auto;
+  }
+  .brand span{ color: var(--purple); }
+  .nav-links{
+    display:flex;
+    gap: 12px;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .nav-links a{
+    position: relative;
+    padding-bottom: 3px;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height: 1px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+  }
+  .nav-links a:hover::after{ transform: scaleX(1); }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+
+  /* ---------- Hero with slideshow ---------- */
+  .hero{
+    position: relative;
+    overflow: hidden;
+    min-height: 640px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .slideshow{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .slide{
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+  }
+  .slide.active{ opacity: 1; }
+
+  .slide-1{ background: url('slide-1.jpg') center/cover no-repeat; }
+  .slide-2{ background: url('slide-2.jpg') center/cover no-repeat; }
+  .slide-3{ background: url('slide-3.jpg') center/cover no-repeat; }
+  .slide-4{ background: url('slide-4.jpg') center/cover no-repeat; }
+  .slide-5{ background: url('slide-5.jpg') center/cover no-repeat; }
+
+  .slide .placeholder-tag{
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .hero-scrim{
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(29,23,48,0.35) 0%, rgba(29,23,48,0.88) 100%);
+  }
+
+  .slide-dots{
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+  }
+  .slide-dots button{
+    width: 22px;
+    height: 3px;
+    background: rgba(255,255,255,0.35);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background .3s ease;
+  }
+  .slide-dots button.active{ background: #fff; }
+
+  .hero-inner{
+    position: relative;
+    z-index: 3;
+    padding: 88px 0 64px;
+    color: var(--paper);
+  }
+  .hero .eyebrow{ color: #d9d2f5; }
+  .hero .eyebrow::before{ background: #fff; }
+  .hero h1{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.02;
+    max-width: 780px;
+    margin: 18px 0 22px;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: #b9a8f0;
+  }
+  .hero p.lede{
+    font-size: 1.1rem;
+    max-width: 480px;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 34px;
+  }
+  .btn-row{ display:flex; gap: 16px; flex-wrap: wrap; }
+  .btn{
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 14px 26px;
+    border-radius: 2px;
+    display: inline-block;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .btn-primary{
+    background: #fff;
+    color: var(--purple-deep);
+  }
+  .info-block a.btn-primary{
+    color: var(--purple-deep);
+  }
+  .btn-primary:hover{ background: var(--sky); transform: translateY(-2px); }
+  .btn-ghost{
+    border: 1px solid rgba(255,255,255,0.7);
+    color: #fff;
+  }
+  .btn-ghost:hover{ background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+  .btn-accent{
+    background: var(--purple);
+    color: #fff;
+  }
+  .btn-accent:hover{ background: var(--purple-deep); transform: translateY(-2px); }
+
+  /* ---------- Sections generic ---------- */
+  section{ padding: 96px 0; }
+  .section-head{ max-width: 620px; margin-bottom: 48px; }
+  .section-head h2{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    margin-top: 14px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-grid > *{
+    min-width: 0;
+  }
+  .about-text p{ margin-bottom: 18px; color: #423a5c; font-size: 1.02rem; overflow-wrap: break-word; }
+  .about-text p:last-child{ margin-bottom: 0; }
+
+  .photo-slot{
+    aspect-ratio: 4/5;
+    background: repeating-linear-gradient(135deg, #eae7f8, #eae7f8 12px, #ded9f2 12px, #ded9f2 24px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: #5b5478;
+    letter-spacing: 0.02em;
+  }
+  .photo-slot.wide{ aspect-ratio: 16/10; }
+
+  img.photo-slot{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ---------- Services (what we grow) ---------- */
+  .grow{ background: var(--sky); position: relative; }
+  .crop-rows{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(29,23,48,0.12);
+  }
+  .crop{
+    padding: 30px 20px;
+    border-right: 1px solid rgba(29,23,48,0.12);
+    border-bottom: 1px solid rgba(29,23,48,0.12);
+  }
+  .crop:nth-child(4n){ border-right: none; }
+  .crop .mark{
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--blue);
+    margin-bottom: 10px;
+    display:block;
+  }
+  .crop h3{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+  .crop p{ font-size: 0.88rem; color: #4c4666; }
+
+  .crop-rows .crop:nth-child(4n+2),
+  .crop-rows .crop:nth-child(4n+4){
+    background: rgba(91,47,174,0.05);
+  }
+
+  .services-cta{
+    padding-top: 36px;
+    text-align: center;
+  }
+
+  /* ---------- Why Us ---------- */
+  .why{ background: var(--paper); }
+  .why-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(29,23,48,0.12);
+  }
+  .why-card{
+    padding: 32px 26px;
+    border-right: 1px solid rgba(29,23,48,0.12);
+    border-bottom: 1px solid rgba(29,23,48,0.12);
+  }
+  .why-card:nth-child(4n){ border-right: none; }
+  .why-card .mark{
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--blue);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .why-card h3{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .why-card p{ font-size: 0.92rem; color: #4c4666; }
+
+  .why-grid .why-card:nth-child(2n){
+    background: rgba(91,47,174,0.05);
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{ background: var(--paper); }
+  .testimonial-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testimonial-card{
+    background: var(--sky);
+    padding: 30px 26px;
+    border-radius: 6px;
+  }
+  .testimonial-card p.quote{
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .testimonial-card p.name{
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+
+  /* ---------- Videos ---------- */
+  .videos{
+    background: var(--sky);
+    padding: 56px 0;
+  }
+  .videos .section-head{
+    margin-bottom: 20px;
+  }
+
+  .video-carousel-wrap{ position: relative; }
+
+  .video-carousel{
+    position: relative;
+    height: 660px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 900px;
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
+    --drag: 0px;
+  }
+  .video-carousel:active{ cursor: grabbing; }
+
+  .video-slot{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+    transform-style: preserve-3d;
+    transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .55s ease;
+  }
+  .video-slot.no-transition{ transition: none; }
+  .video-slot video{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .video-slot.center{
+    width: 370px;
+    aspect-ratio: 9/16;
+    transform: translate3d(-50%,-50%,0) translateX(var(--drag)) scale(1);
+    opacity: 1;
+    z-index: 3;
+    cursor: default;
+    box-shadow: 0 30px 70px rgba(29,23,48,0.45);
+  }
+  .video-slot.side-left{
+    width: 260px;
+    aspect-ratio: 9/16;
+    transform: translate3d(calc(-50% - 195px), -50%, -340px) translateX(calc(var(--drag) * 0.4)) rotateY(38deg) scale(0.62);
+    opacity: 0.28;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .video-slot.side-right{
+    width: 260px;
+    aspect-ratio: 9/16;
+    transform: translate3d(calc(-50% + 195px), -50%, -340px) translateX(calc(var(--drag) * 0.4)) rotateY(-38deg) scale(0.62);
+    opacity: 0.28;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .video-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    color: var(--purple-deep);
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease;
+  }
+  .video-nav:hover{ background: #fff; }
+  .video-nav.prev{ left: 6%; }
+  .video-nav.next{ right: 6%; }
+
+  .video-dots{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .video-dots button{
+    width: 22px;
+    height: 3px;
+    background: rgba(29,23,48,0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background .3s ease;
+  }
+  .video-dots button.active{ background: var(--purple); }
+
+  @media (max-width: 820px){
+    .video-carousel{ height: 560px; }
+    .video-slot.center{ width: 270px; }
+    .video-slot.side-left{
+      width: 190px;
+      transform: translate3d(calc(-50% - 110px), -50%, -360px) rotateY(40deg) scale(0.58);
+      opacity: 0.25;
+    }
+    .video-slot.side-right{
+      width: 190px;
+      transform: translate3d(calc(-50% + 110px), -50%, -360px) rotateY(-40deg) scale(0.58);
+      opacity: 0.25;
+    }
+    .video-nav{ display: none; }
+  }
+
+  /* ---------- Visit ---------- */
+  .visit{
+    background: var(--purple-deep);
+    color: var(--sky);
+  }
+  .visit .eyebrow{ color: #b9a8f0; }
+  .visit .eyebrow::before{ background: var(--blue); }
+  .visit .section-head h2{ color: #fff; }
+  .visit-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .info-block{ margin-bottom: 28px; }
+  .info-block:last-child{ margin-bottom: 0; }
+  .info-block h4{
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #b9a8f0;
+    margin-bottom: 8px;
+  }
+  .info-block p, .info-block a{
+    font-size: 1.02rem;
+    color: #f0eefb;
+  }
+  .map-slot{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 0;
+    display: block;
+    border-radius: 14px;
+  }
+
+  footer{
+    background: var(--purple-deep);
+    color: #cfc8ec;
+    border-top: 1px solid rgba(238,240,250,0.15);
+    padding: 28px 0;
+    font-size: 0.82rem;
+  }
+  footer .wrap{ display:flex; justify-content: space-between; width:100%; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 820px){
+    .nav-links{
+      position: absolute;
+      top: 100%; left:0; right:0;
+      background: var(--sky);
+      flex-direction: column;
+      padding: 20px 28px 28px;
+      gap: 18px;
+      display: none;
+      border-bottom: 1px solid rgba(29,23,48,0.1);
+    }
+    .nav-links.open{ display:flex; }
+    .nav-toggle{ display:block; }
+    .about-grid, .visit-grid{ grid-template-columns: 1fr; }
+    .crop-rows{ grid-template-columns: repeat(2, 1fr); }
+    .crop:nth-child(2n){ border-right: none; }
+    .why-grid{ grid-template-columns: repeat(2, 1fr); }
+    .why-card:nth-child(2n){ border-right: none; }
+    .testimonial-grid{ grid-template-columns: 1fr; }
+    section{ padding: 64px 0; }
+    .hero{ min-height: 520px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="" class="brand-logo">HomeCity <span>Farms</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#grow">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#1d1730" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="slideshow" id="slideshow">
+    <div class="slide slide-1 active"><span class="placeholder-tag">photo 1 — swap background-image</span></div>
+    <div class="slide slide-2"><span class="placeholder-tag">photo 2 — swap background-image</span></div>
+    <div class="slide slide-3"><span class="placeholder-tag">photo 3 — swap background-image</span></div>
+    <div class="slide slide-4"><span class="placeholder-tag">photo 4 — swap background-image</span></div>
+    <div class="slide slide-5"><span class="placeholder-tag">photo 5 — swap background-image</span></div>
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="slide-dots" id="slideDots">
+    <button class="active" data-index="0" aria-label="Slide 1"></button>
+    <button data-index="1" aria-label="Slide 2"></button>
+    <button data-index="2" aria-label="Slide 3"></button>
+    <button data-index="3" aria-label="Slide 4"></button>
+    <button data-index="4" aria-label="Slide 5"></button>
+  </div>
+
+  <div class="hero-inner wrap">
+    <p class="eyebrow">EST. 2023 · VOLTA REGION, GHANA</p>
+    <h1>Quality You Can Trust.<br><em>Flavor You Will Remember.</em></h1>
+    <p class="lede">A small family farm raising the best livestock — by hand, in season, close to the soil.</p>
+    <div class="btn-row">
+      <a href="#grow" class="btn btn-primary">Our services</a>
+      <a href="#visit" class="btn btn-ghost">Plan a visit</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <img src="about-photo.jpg" alt="HomeCity Farms" class="photo-slot wide">
+    <div class="about-text">
+      <p class="eyebrow">Our story</p>
+      <h2 style="font-family:var(--display); font-weight:600; font-size:1.5rem; margin:14px 0 20px;">Quality and integrity</h2>
+      <p>For as long as we can remember, our founder has held a deep, quiet passion for animals and the land. After a long and dedicated career, he decided to trade his professional life for the fields, turning a lifelong dream into the foundation of this farm.</p>
+      <p>What began as a personal passion project has grown into a commitment we are incredibly proud of today. At the heart of our farm is a simple promise: we only provide the best. For us, farming isn't just about the work; it's about honor and integrity. We believe that if you are going to do something, you should do it right. That is why every animal here is raised with the utmost care, and every product that leaves our farm meets the highest standards of quality. We don't cut corners, because our name — and our commitment to you — is behind everything we produce.</p>
+    </div>
+  </div>
+</section>
+
+<section class="grow" id="grow">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Always in season</p>
+      <h2>Our Services</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="wrap" style="padding:0;">
+    <div class="crop-rows">
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Adult livestock</h3><p>We have many healthy adult pigs and goats for sale.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Breeders</h3><p>We a variety of healthy breedering goats and pigs.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Piglets</h3><p>We also have piglets for sale. </p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>We Butcher</h3><p>We can kill and butcher and dress purchased livestock.</p></div>
+      <div class="crop"><span class="mark">SOLD-OUT</span><h3>MEAT</h3><p>We also have fresh pork meat in stock to be sold at smaller quantities.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>POUTRY</h3><p>we have healthy poultry birds available as well.</p></div>
+    
+    </div>
+  </div>
+  <div class="wrap services-cta">
+    <a href="https://wa.me/233244847572" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Order via WhatsApp</a>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why HomeCity Farms</p>
+      <h2>What sets us apart</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="mark">01</span>
+        <h3>Raised with care</h3>
+        <p>Every animal on our farm is raised humanely, with space to move and a diet we control from start to finish.</p>
+      </div>
+      <div class="why-card">
+        <span class="mark">02</span>
+        <h3>No shortcuts</h3>
+        <p>We don't cut corners to save time or money. If it's not up to our standard, it doesn't leave the farm.</p>
+      </div>
+      <div class="why-card">
+        <span class="mark">03</span>
+        <h3>Direct from us to you</h3>
+        <p>No middlemen, no distributors. What you get has come straight from our farm to your table.</p>
+      </div>
+      <div class="why-card">
+        <span class="mark">04</span>
+        <h3>Quality of life</h3>
+        <p>We ensure that the quality of life of our livestock is top notch so that we deliver the best tasting and safest produced for you our customer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="videos" id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">See it in motion</p>
+      <h2>Life on the farm</h2>
+    </div>
+  </div>
+
+  <div class="video-carousel-wrap wrap">
+    <div class="video-carousel" id="videoCarousel">
+      <div class="video-slot side-left" id="slotLeft"><video muted playsinline preload="metadata"></video></div>
+      <div class="video-slot center" id="slotCenter"><video muted playsinline preload="metadata"></video></div>
+      <div class="video-slot side-right" id="slotRight"><video muted playsinline preload="metadata"></video></div>
+    </div>
+
+    <button class="video-nav prev" id="videoPrev" aria-label="Previous video">‹</button>
+    <button class="video-nav next" id="videoNext" aria-label="Next video">›</button>
+
+    <div class="video-dots" id="videoDots">
+      <button class="active" data-index="0" aria-label="Video 1"></button>
+      <button data-index="1" aria-label="Video 2"></button>
+      <button data-index="2" aria-label="Video 3"></button>
+      <button data-index="3" aria-label="Video 4"></button>
+      <button data-index="4" aria-label="Video 5"></button>
+      <button data-index="5" aria-label="Video 6"></button>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <p class="eyebrow">Come see us</p>
+      <h2 style="font-family:var(--display); font-weight:600; font-size:2rem; margin:14px 0 30px; color:#fff;">Visit the farm</h2>
+
+      <div class="info-block">
+        <h4>PEKI</h4>
+        <p>Off the Tema - Jasikan road, Volta Region, Ghana</p>
+      </div>
+      <div class="info-block">
+        <h4>Hours</h4>
+        <p>Monday – Sunday, 9:00am – 5:00pm</p>
+      </div>
+      <div class="info-block">
+        <h4>Contact</h4>
+        <p><a href="tel:+233244847572">+233 24 484 7572</a></p>
+        <p><a href="mailto:homecityfarms@gmail.com">homecityfarms@gmail.com</a></p>
+        <p><a href="https://wa.me/233244847572" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:8px;">Chat on WhatsApp</a></p>
+      </div>
+    </div>
+    <div>
+      <h2 style="font-family:var(--display); font-weight:600; font-size:2rem; margin:14px 0 30px; color:#fff;">Our location.</h2>
+
+    <iframe
+      class="map-slot"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.7828702383736!2d0.25189967607212316!3d6.549076493443945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102749ba7a173891%3A0xad82c27552ea6f4b!2sHomeCity%20Pigery!5e0!3m2!1sen!2sgh!4v1783860112210!5m2!1sen!2sgh"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 HomeCity Farms</span>
+    <span>Built with care, in Ghana</span>
+  </div>
+</footer>
+
+<script>
+  // ---- Nav toggle ----
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // ---- Hero slideshow ----
+  const slides = document.querySelectorAll('#slideshow .slide');
+  const dots = document.querySelectorAll('#slideDots button');
+  let current = 0;
+  const intervalMs = 5000;
+
+  function goTo(index){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function next(){
+    goTo((current + 1) % slides.length);
+  }
+
+  let heroTimer = setInterval(next, intervalMs);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      clearInterval(heroTimer);
+      goTo(i);
+      heroTimer = setInterval(next, intervalMs);
+    });
+  });
+
+  // ---- Infinite video carousel ----
+  const videoFiles = ['farm-video-1.mp4','farm-video-2.mp4','farm-video-3.mp4','farm-video-4.mp4','farm-video-5.mp4','farm-video-6.mp4'];
+  let vIndex = 0;
+  let autoAdvance = true; // turns off permanently once the user takes manual control
+
+  const slotCenter = document.querySelector('#slotCenter video');
+  const slotLeft = document.querySelector('#slotLeft video');
+  const slotRight = document.querySelector('#slotRight video');
+  const vDots = document.querySelectorAll('#videoDots button');
+
+  function mod(n, m){ return ((n % m) + m) % m; }
+
+  function setFrame(videoEl, src){
+    if (videoEl.dataset.src !== src){
+      videoEl.dataset.src = src;
+      videoEl.src = src;
+      videoEl.addEventListener('loadedmetadata', () => { videoEl.currentTime = 0.1; }, { once: true });
+    }
+  }
+
+  function render(){
+    setFrame(slotCenter, videoFiles[mod(vIndex, videoFiles.length)]);
+    setFrame(slotLeft, videoFiles[mod(vIndex - 1, videoFiles.length)]);
+    setFrame(slotRight, videoFiles[mod(vIndex + 1, videoFiles.length)]);
+
+    slotLeft.pause();
+    slotRight.pause();
+    slotCenter.currentTime = 0;
+    slotCenter.play().catch(()=>{});
+
+    vDots.forEach(d => d.classList.remove('active'));
+    vDots[mod(vIndex, videoFiles.length)].classList.add('active');
+  }
+
+  function goNext(){ vIndex++; render(); }
+  function goPrev(){ vIndex--; render(); }
+
+  function userInterrupt(){ autoAdvance = false; }
+
+  // Auto-advance once the current center video finishes playing —
+  // but only while the user hasn't taken manual control.
+  slotCenter.addEventListener('ended', () => {
+    if (autoAdvance) goNext();
+  });
+
+  document.getElementById('videoNext').addEventListener('click', () => { userInterrupt(); goNext(); });
+  document.getElementById('videoPrev').addEventListener('click', () => { userInterrupt(); goPrev(); });
+  vDots.forEach((dot, i) => dot.addEventListener('click', () => { userInterrupt(); vIndex = i; render(); }));
+  document.getElementById('slotLeft').addEventListener('click', () => { userInterrupt(); goPrev(); });
+  document.getElementById('slotRight').addEventListener('click', () => { userInterrupt(); goNext(); });
+
+  const carouselEl = document.getElementById('videoCarousel');
+  const dragSlots = [
+    document.getElementById('slotLeft'),
+    document.getElementById('slotCenter'),
+    document.getElementById('slotRight')
+  ];
+  let dragStartX = 0;
+  let dragging = false;
+  const maxDrag = 140; // px of resistance-free movement before rubber-banding kicks in
+
+  function setDrag(px){
+    carouselEl.style.setProperty('--drag', px + 'px');
+  }
+
+  function applyResistance(dx){
+    if (Math.abs(dx) <= maxDrag) return dx;
+    const over = Math.abs(dx) - maxDrag;
+    const damped = maxDrag + Math.sqrt(over) * 6;
+    return dx < 0 ? -damped : damped;
+  }
+
+  carouselEl.addEventListener('pointerdown', e => {
+    dragging = true;
+    dragStartX = e.clientX;
+    carouselEl.setPointerCapture(e.pointerId);
+    dragSlots.forEach(s => s.classList.add('no-transition'));
+  });
+
+  carouselEl.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const rawDx = e.clientX - dragStartX;
+    setDrag(applyResistance(rawDx));
+  });
+
+  carouselEl.addEventListener('pointerup', e => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = e.clientX - dragStartX;
+
+    dragSlots.forEach(s => s.classList.remove('no-transition'));
+    setDrag(0); // animates smoothly back to rest via CSS transition
+
+    if (dx > 60) { userInterrupt(); goPrev(); }
+    else if (dx < -60) { userInterrupt(); goNext(); }
+  });
+
+  carouselEl.addEventListener('pointercancel', () => {
+    dragging = false;
+    dragSlots.forEach(s => s.classList.remove('no-transition'));
+    setDrag(0);
+  });
+
+  render();
+</script>
+
+</body>
+</html>
