@@ -453,6 +453,14 @@
     z-index: 2;
     cursor: pointer;
   }
+  .video-slot.hidden{
+    width: 260px;
+    aspect-ratio: 9/16;
+    transform: translate3d(-50%, -50%, -600px) scale(0.4);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
 
   .video-nav{
     position: absolute;
@@ -622,9 +630,9 @@
   <div class="hero-inner wrap">
     <p class="eyebrow">EST. 2023 · VOLTA REGION, GHANA</p>
     <h1>Quality You Can Trust.<br><em>Flavor You Will Remember.</em></h1>
-    <p class="lede">A small family farm raising the best livestock — by hand, in season, close to the soil.</p>
+    <p class="lede">A family-owned livestock farm dedicated to raising healthy animals with care, integrity, and a commitment to quality.</p>
     <div class="btn-row">
-      <a href="#grow" class="btn btn-primary">Our services</a>
+      <a href="#grow" class="btn btn-primary">View our products</a>
       <a href="#visit" class="btn btn-ghost">Plan a visit</a>
     </div>
   </div>
@@ -636,8 +644,13 @@
     <div class="about-text">
       <p class="eyebrow">Our story</p>
       <h2 style="font-family:var(--display); font-weight:600; font-size:1.5rem; margin:14px 0 20px;">Quality and integrity</h2>
-      <p>For as long as we can remember, our founder has held a deep, quiet passion for animals and the land. After a long and dedicated career, he decided to trade his professional life for the fields, turning a lifelong dream into the foundation of this farm.</p>
-      <p>What began as a personal passion project has grown into a commitment we are incredibly proud of today. At the heart of our farm is a simple promise: we only provide the best. For us, farming isn't just about the work; it's about honor and integrity. We believe that if you are going to do something, you should do it right. That is why every animal here is raised with the utmost care, and every product that leaves our farm meets the highest standards of quality. We don't cut corners, because our name — and our commitment to you — is behind everything we produce.</p>
+        <p>
+        For as long as we can remember, our founder has always had a passion for animals and the land. After many years of dedicated professional work, he chose to pursue that lifelong dream by establishing HomeCity Farms.
+        </p>
+
+        <p>
+        What began as a personal passion has grown into a family-run farm built on honesty, integrity, and quality. We believe that if something is worth doing, it is worth doing well. Every animal on our farm is raised with care, and every product we offer reflects the standards we set for ourselves. We never cut corners because our name—and our promise to our customers—stands behind everything we produce.
+        </p>
     </div>
   </div>
 </section>
@@ -650,15 +663,13 @@
     </div>
   </div>
   <div class="wrap" style="padding:0;">
-    <div class="wrap" style="padding:0;">
     <div class="crop-rows">
-      <div class="crop"><span class="mark">AVAILABLE</span><h3>Adult livestock</h3><p>We have many healthy adult pigs and goats for sale.</p></div>
-      <div class="crop"><span class="mark">AVAILABLE</span><h3>Breeders</h3><p>We a variety of healthy breedering goats and pigs.</p></div>
-      <div class="crop"><span class="mark">AVAILABLE</span><h3>Piglets</h3><p>We also have piglets for sale. </p></div>
-      <div class="crop"><span class="mark">AVAILABLE</span><h3>We Butcher</h3><p>We can kill and butcher and dress purchased livestock.</p></div>
-      <div class="crop"><span class="mark">SOLD-OUT</span><h3>MEAT</h3><p>We also have fresh pork meat in stock to be sold at smaller quantities.</p></div>
-      <div class="crop"><span class="mark">AVAILABLE</span><h3>POUTRY</h3><p>we have healthy poultry birds available as well.</p></div>
-    
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Adult livestock</h3><p>Healthy adult pigs and goats available for sale.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Breeders</h3><p>Healthy breeding pigs and goats carefully selected for quality.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Piglets</h3><p>Healthy piglets are available throughout the year.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>Butchering Services</h3><p>Professional slaughtering, butchering, and dressing services for livestock purchased from our farm.</p></div>
+      <div class="crop"><span class="mark">SOLD-OUT</span><h3>SEASONAL</h3><p>Fresh pork and goat meat is available in convenient retail quantities whenever stock is available.</p></div>
+      <div class="crop"><span class="mark">AVAILABLE</span><h3>POULTRY</h3><p>Healthy poultry birds are also available.</p></div>
     </div>
   </div>
   <div class="wrap services-cta">
@@ -692,13 +703,12 @@
       </div>
       <div class="why-card">
         <span class="mark">04</span>
-        <h3>Quality of life</h3>
-        <p>We ensure that the quality of life of our livestock is top notch so that we deliver the best tasting and safest produced for you our customer.</p>
+        <h3>Exceptional animal welfare</h3>
+        <p>We maintain high welfare standards for all our livestock so we can provide safe, healthy, and great-tasting products for every customer.</p>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="videos" id="videos">
   <div class="wrap">
@@ -710,9 +720,12 @@
 
   <div class="video-carousel-wrap wrap">
     <div class="video-carousel" id="videoCarousel">
-      <div class="video-slot side-left" id="slotLeft"><video muted playsinline preload="metadata"></video></div>
-      <div class="video-slot center" id="slotCenter"><video muted playsinline preload="metadata"></video></div>
-      <div class="video-slot side-right" id="slotRight"><video muted playsinline preload="metadata"></video></div>
+      <div class="video-slot" data-index="0"><video src="farm-video-1.mp4" muted playsinline preload="auto"></video></div>
+      <div class="video-slot" data-index="1"><video src="farm-video-2.mp4" muted playsinline preload="auto"></video></div>
+      <div class="video-slot" data-index="2"><video src="farm-video-3.mp4" muted playsinline preload="auto"></video></div>
+      <div class="video-slot" data-index="3"><video src="farm-video-4.mp4" muted playsinline preload="auto"></video></div>
+      <div class="video-slot" data-index="4"><video src="farm-video-5.mp4" muted playsinline preload="auto"></video></div>
+      <div class="video-slot" data-index="5"><video src="farm-video-6.mp4" muted playsinline preload="auto"></video></div>
     </div>
 
     <button class="video-nav prev" id="videoPrev" aria-label="Previous video">‹</button>
@@ -736,8 +749,9 @@
       <h2 style="font-family:var(--display); font-weight:600; font-size:2rem; margin:14px 0 30px; color:#fff;">Visit the farm</h2>
 
       <div class="info-block">
-        <h4>PEKI</h4>
-        <p>Off the Tema - Jasikan road, Volta Region, Ghana</p>
+        <h4>Location</h4>
+        <p>Peki, Volta Region</p>
+        <p>Off the Jasikan Road</p>
       </div>
       <div class="info-block">
         <h4>Hours</h4>
@@ -753,14 +767,14 @@
     <div>
       <h2 style="font-family:var(--display); font-weight:600; font-size:2rem; margin:14px 0 30px; color:#fff;">Our location.</h2>
 
-    <iframe
-      class="map-slot"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.7828702383736!2d0.25189967607212316!3d6.549076493443945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102749ba7a173891%3A0xad82c27552ea6f4b!2sHomeCity%20Pigery!5e0!3m2!1sen!2sgh!4v1783860112210!5m2!1sen!2sgh"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+      <iframe
+        class="map-slot"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.7828702383736!2d0.25189967607212316!3d6.549076493443945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102749ba7a173891%3A0xad82c27552ea6f4b!2sHomeCity%20Pigery!5e0!3m2!1sen!2sgh!4v1783860112210!5m2!1sen!2sgh"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
   </div>
 </section>
@@ -768,7 +782,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 HomeCity Farms</span>
-    <span>Built with care, in Ghana</span>
+    <span>Livestock farm • Peki Volta Region</span>
   </div>
 </footer>
 
@@ -807,66 +821,74 @@
     });
   });
 
-  // ---- Infinite video carousel ----
-  const videoFiles = ['farm-video-1.mp4','farm-video-2.mp4','farm-video-3.mp4','farm-video-4.mp4','farm-video-5.mp4','farm-video-6.mp4'];
-  let vIndex = 0;
-  let autoAdvance = true; // turns off permanently once the user takes manual control
-
-  const slotCenter = document.querySelector('#slotCenter video');
-  const slotLeft = document.querySelector('#slotLeft video');
-  const slotRight = document.querySelector('#slotRight video');
+  // ---- Infinite video carousel (all videos preloaded, roles rotate — no black flash) ----
+  const carouselEl = document.getElementById('videoCarousel');
+  const slotEls = Array.from(document.querySelectorAll('.video-slot'));
+  const totalVideos = slotEls.length; // 6
   const vDots = document.querySelectorAll('#videoDots button');
+  let vIndex = 0;
 
   function mod(n, m){ return ((n % m) + m) % m; }
 
-  function setFrame(videoEl, src){
-    if (videoEl.dataset.src !== src){
-      videoEl.dataset.src = src;
-      videoEl.src = src;
-      videoEl.addEventListener('loadedmetadata', () => { videoEl.currentTime = 0.1; }, { once: true });
-    }
-  }
+  function classifyAndRender(){
+    slotEls.forEach(slot => {
+      const i = parseInt(slot.dataset.index, 10);
+      const rel = mod(i - vIndex + 3, totalVideos) - 3; // range roughly -3..2
+      const video = slot.querySelector('video');
 
-  function render(){
-    setFrame(slotCenter, videoFiles[mod(vIndex, videoFiles.length)]);
-    setFrame(slotLeft, videoFiles[mod(vIndex - 1, videoFiles.length)]);
-    setFrame(slotRight, videoFiles[mod(vIndex + 1, videoFiles.length)]);
+      slot.classList.remove('center', 'side-left', 'side-right', 'hidden');
 
-    slotLeft.pause();
-    slotRight.pause();
-    slotCenter.currentTime = 0;
-    slotCenter.play().catch(()=>{});
+      if (rel === 0){
+        slot.classList.add('center');
+        video.currentTime = 0;
+        video.play().catch(()=>{});
+      } else if (rel === -1){
+        slot.classList.add('side-left');
+        video.pause();
+      } else if (rel === 1){
+        slot.classList.add('side-right');
+        video.pause();
+      } else {
+        slot.classList.add('hidden');
+        video.pause();
+      }
+    });
 
     vDots.forEach(d => d.classList.remove('active'));
-    vDots[mod(vIndex, videoFiles.length)].classList.add('active');
+    vDots[mod(vIndex, totalVideos)].classList.add('active');
   }
 
-  function goNext(){ vIndex++; render(); }
-  function goPrev(){ vIndex--; render(); }
+  function goNext(){ vIndex = mod(vIndex + 1, totalVideos); classifyAndRender(); }
+  function goPrev(){ vIndex = mod(vIndex - 1, totalVideos); classifyAndRender(); }
+  function goToIndex(i){ vIndex = mod(i, totalVideos); classifyAndRender(); }
 
-  function userInterrupt(){ autoAdvance = false; }
-
-  // Auto-advance once the current center video finishes playing —
-  // but only while the user hasn't taken manual control.
-  slotCenter.addEventListener('ended', () => {
-    if (autoAdvance) goNext();
+  // Whichever video is currently "center" auto-advances the carousel once it
+  // finishes playing — this always keeps looping, regardless of past manual use.
+  slotEls.forEach(slot => {
+    const video = slot.querySelector('video');
+    video.addEventListener('ended', () => {
+      if (slot.classList.contains('center')) goNext();
+    });
   });
 
-  document.getElementById('videoNext').addEventListener('click', () => { userInterrupt(); goNext(); });
-  document.getElementById('videoPrev').addEventListener('click', () => { userInterrupt(); goPrev(); });
-  vDots.forEach((dot, i) => dot.addEventListener('click', () => { userInterrupt(); vIndex = i; render(); }));
-  document.getElementById('slotLeft').addEventListener('click', () => { userInterrupt(); goPrev(); });
-  document.getElementById('slotRight').addEventListener('click', () => { userInterrupt(); goNext(); });
+  document.getElementById('videoNext').addEventListener('click', goNext);
+  document.getElementById('videoPrev').addEventListener('click', goPrev);
+  vDots.forEach((dot, i) => dot.addEventListener('click', () => goToIndex(i)));
 
-  const carouselEl = document.getElementById('videoCarousel');
-  const dragSlots = [
-    document.getElementById('slotLeft'),
-    document.getElementById('slotCenter'),
-    document.getElementById('slotRight')
-  ];
+  // Click a peeking side video to jump straight to it
+  let wasDragged = false;
+  carouselEl.addEventListener('click', e => {
+    if (wasDragged){ wasDragged = false; return; }
+    const slot = e.target.closest('.video-slot');
+    if (!slot) return;
+    if (slot.classList.contains('side-left')) goPrev();
+    else if (slot.classList.contains('side-right')) goNext();
+  });
+
+  // ---- Drag / swipe with live parallax + elastic resistance ----
   let dragStartX = 0;
   let dragging = false;
-  const maxDrag = 140; // px of resistance-free movement before rubber-banding kicks in
+  const maxDrag = 140;
 
   function setDrag(px){
     carouselEl.style.setProperty('--drag', px + 'px');
@@ -881,14 +903,16 @@
 
   carouselEl.addEventListener('pointerdown', e => {
     dragging = true;
+    wasDragged = false;
     dragStartX = e.clientX;
     carouselEl.setPointerCapture(e.pointerId);
-    dragSlots.forEach(s => s.classList.add('no-transition'));
+    slotEls.forEach(s => s.classList.add('no-transition'));
   });
 
   carouselEl.addEventListener('pointermove', e => {
     if (!dragging) return;
     const rawDx = e.clientX - dragStartX;
+    if (Math.abs(rawDx) > 5) wasDragged = true;
     setDrag(applyResistance(rawDx));
   });
 
@@ -897,20 +921,20 @@
     dragging = false;
     const dx = e.clientX - dragStartX;
 
-    dragSlots.forEach(s => s.classList.remove('no-transition'));
-    setDrag(0); // animates smoothly back to rest via CSS transition
+    slotEls.forEach(s => s.classList.remove('no-transition'));
+    setDrag(0);
 
-    if (dx > 60) { userInterrupt(); goPrev(); }
-    else if (dx < -60) { userInterrupt(); goNext(); }
+    if (dx > 60) goPrev();
+    else if (dx < -60) goNext();
   });
 
   carouselEl.addEventListener('pointercancel', () => {
     dragging = false;
-    dragSlots.forEach(s => s.classList.remove('no-transition'));
+    slotEls.forEach(s => s.classList.remove('no-transition'));
     setDrag(0);
   });
 
-  render();
+  classifyAndRender();
 </script>
 
 </body>
